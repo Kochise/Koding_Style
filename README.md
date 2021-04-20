@@ -1,7 +1,7 @@
 # Koding_Style
 Some personal general coding syle explained (not just C/C++)
 
-* Documenting
+## Documenting
 
 Documentation. The cornerstone of coders' evolution. Often disregarded, should be the first thing to do instead to go straight typing on the keyboard like a wild monkey. While prototyping is nice to test a concept, a product or a full scale application is more than just a concept. Things should be planned in advance. This planning should leads to structural definition, which leads to exhaustive documentation.
 
@@ -13,15 +13,19 @@ When working on a large scale project, it might be interesting to spread the wor
 
 There are a few IDF (Integrated Development Format) such like Jupyter Notebooks that mix documentation and "experimentation", much like Labview's virtual interface where the source code (diagram) is hidden beneath the front interface, allowing the user/coder to switch between the two seamlessly. Yet that's the exception. The general case is documentation and code are separate.
 
+https://jupyter.org/
+
 Hence keeping track which update of the documentation belongs to which source code is often tricky. If version numbers are not updated with care, one can easily start lagging behind and inconsistencies could arise, leading to bugs difficult to understand, making people loose time and money. As the source code might not be shared, so the documentation is the reference point.
 
 So, again, everything starts from the documentation. That's what open standards are, documentations and specifications that are not linked to any particular implementation. Those are often technical informations, but functional level documentation shall also be opened to broader review and use. That might help standardise some interaction with the computer and its programs.
 
-* Commenting
+There are tools to extract some sort of documentation out of the source code, provided the comments are formatted in a way that allows the tool to detect certain keywords and patterns. The main problem remains, there is inevitable duplication of documentation, prototype definition, whatever. Keeping everything in sync is a mammoth task, that should be structured differently imho.
+
+## Commenting
 
 As seen previously, the source code shall feature comments to explain what is happening, what is the purpose of the lines of code. A comment linking to the respective documentation should always be present somewhere, more often in the header comment. Better have the comments on separate lines, preferably on the line above the code. Do not comment "adding numbers" for an addition.
 
-* Cosmetics
+## Cosmetics
 
 Tastes and colors. While I do agree everyone should see fit in the way things are coded, some programming languages gives too much freedom to artistic wilderness, yet are very strict regarding the code structure. Miss one keyword and your card castle falls on itself shamelessly. A rare few languages, like Python, enforce strict rules regarding what the code should look like. For everyone.
 
@@ -35,23 +39,25 @@ For C/C++ and similar languages with brackets/parentheses structuring the code, 
 
 https://en.wikipedia.org/wiki/Indentation_style
 
-Python, for that regard, is pretty straightforward. No "decoration", hierarchy is achieved through indentation, operation separation with line breaks (or optionally semicolons *pwah*). That keeps the code clean from too much noise and can "pack" more lines onto the screen. However commenting in Python can become quite a mess
+Python, for that regard, is pretty straightforward. No "decoration", hierarchy is achieved through indentation, operation separation with line breaks (or optionally semicolons *pwah*). That keeps the code clean from too much noise and can "pack" more lines onto the screen. However commenting in Python can become quite a mess with its various alternative formats. Try to stay relevant.
 
-* Line ending
+## Line ending
 
 Unix style (LF). Always. If your code editor cannot deal with different line ending, then you're screwed, a change of occupation shall be required. Windows' line ending (CRLF) is useless. A 20k lines document have 20kb of redundant line breaking character (CR). While there are few 20k lines source files, a project might have it spread across several files, hence we might get the 20k garbage.
 
 Sure, nowadays it's not really an issue, computers have plenty of memory and storage space. But multiply by the number of projects and forks, and you get a pretty amount of wasted space across the globe. All for nothing in fact. I'm a Windows coder, by now we all use Git, develop cross platform applications, hence having line ending consistency should be quite a priority. LF.
 
-* Indenting
+## Indenting
 
 My Lord. This. Debate. Again. TABULATION for Christ's sake ! There is no valid point in using space as indentation characters. Are you doing ascii art inside your source code ? What if someone wants the indentation at 8 instead of 4 ? TABULATION is relative, you can even have ELASTIC TABULATION. Not with space as indentation. Should I tell you about the waste of "space" ?
 
-No, really, when you click somewhere on screen, the caret sets on TABULATION start or end, not in the middle of nowhere, forcing you to navigate to the next "stop". Try coding in Python and mistyping an indentation (ie. through a misplaced copy/paste) with 3 spaces on line line and 5 on the next. Try running the code. You will never have this issue with genuine TABULATION.
+https://nickgravgaard.com/elastic-tabstops/
 
-Not only it's easier to edit (navigation is faster, alignment is "automatic"), nicer to edit (alignment remains until the TABULATION size threshold is reached), did I told you it also save space ? Have you compared a file using space as indentation character with the same using TABULATION ? You'd be surprised how much you can save "space". Keep in mind tabulation is only (but for Python) a visual aid.
+No, really, when you click somewhere on screen, the caret sets on TABULATION start or end, not in the middle of nowhere, forcing you to navigate to the next "stop". Try coding in Python and mistyping an indentation (ie. through a misplaced copy/paste) with 3 spaces indentation on one line and 5 on the next. Try running the code. You will never have this issue with genuine TABULATION.
 
-* Typing
+Not only it's easier to edit (navigation is faster, alignment is "automatic"), nicer to edit (alignment remains until the TABULATION width threshold is reached), did I told you it also save "space" ? Have you compared a file using space as indentation character with the same using TABULATION ? You'd be surprised how much you can save "space". Keep in mind tabulation is only (but for Python) a visual aid.
+
+## Typing
 
 Humans deals with numbers, words and arrays. Computers deals with numbers and arrays. Standards were defined to fit words into numbers (ascii, ansi, unicode, etc). But even numbers are weirdos, with size, sign or endianess (we get there finally) that forms a legion of different data types, there are broad families (integers, reals, complexes, dates, etc). To name only a few.
 
@@ -61,7 +67,9 @@ Hence even dynamic typed languages should be somewhat typed (Python's mypy) not 
 
 Did I told you to document before hand to, one amongst others, anticipate the typing of your structures ? While the string type is very flexible (Tcl) as a data container, you cannot do much with it, hence you'll rely one way or another on more suitable data types. But choose them carefully. Not only they might waste space, but require more processing power, even just being misaligned.
 
-* Coding
+Endianess shouldn't be an issue anymore. Try to stay native to the processor used, little endian has won the battle, get used to it. While watching a little endian memory dump is ugly, debuggers can now display memory in "integer array" format of the chosen size. Plus little endian have the "advantage" to always have the LSB at the same location, regardless of the integer size (byte, word, int).
+
+## Coding
 
 Where is your documentation ? Don't start typing if you don't have a minimum of documentation. Even a commented pseudo code should do as a starting point. But always tell what's the purpose of the project, file, class, method, definition, whatever. You'll come back to it 5 years later and won't understand shit about what happened. Document for the future yourself. Or anyone else.
 
@@ -71,13 +79,8 @@ One return per function, store the value in a local variable with the right type
 
 Use a compact notation as naming convention. Also use Hungarian notation with type and scope as prefix. For instance 'int_line' and 'str_line' tells pretty much what it is and how to use it, even if their definition is not in sight. Write 'int_from_bytes' instead of 'bytes_to_int', hence function names should match like dominoes (reading left to right : int_from_bytes(bytes_from_string())).
 
-* Debugging
+## Debugging
 
 Not all debuggers worth a penny. Well, it changed since the 80s. Poor's man debugging is printf. Yet it is often easier and faster to use printf (or logs) to debug live, enabling/disabling the debug using macros. Plus that force to instrument the source code, which can be turned into legacy logging system with a little refactoring (even easier if already using proxy macros).
 
 Step-by-step, breakpoint, debugging is also necessary, but should be kept at its minimum. Most notably because breakpoint aren't always saved in the project file (Labview) or because we don't always needs to inspect that accurately the working of a function or a program. Plus some microcontrollers don't have many hardware breakpoints (4 usable on stm32) so avoid it as much as possible.
-
-
-
-
-
