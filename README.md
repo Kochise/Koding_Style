@@ -79,8 +79,12 @@ One return per function, store the value in a local variable with the right type
 
 Use a compact notation as naming convention. Also use Hungarian notation with type and scope as prefix. For instance 'int_line' and 'str_line' tells pretty much what it is and how to use it, even if their definition is not in sight. Write 'int_from_bytes' instead of 'bytes_to_int', hence function names should match like dominoes (reading left to right : int_from_bytes(bytes_from_string())).
 
+Avoid early optimisation, leave the compiler something to do. Avoid doing too much on one line, spread the workload across several lines. It's cheap, it will do the same. Benefit is you can watch each step when debugging. Using intermediate local variables allows to check their content and use them several times in calculation. When asking the compiler to optimize, it will combine them anyway.
+
 ## Debugging
 
 Not all debuggers worth a penny. Well, it changed since the 80s. Poor's man debugging is printf. Yet it is often easier and faster to use printf (or logs) to debug live, enabling/disabling the debug using macros. Plus that force to instrument the source code, which can be turned into legacy logging system with a little refactoring (even easier if already using proxy macros).
 
 Step-by-step, breakpoint, debugging is also necessary, but should be kept at its minimum. Most notably because breakpoint aren't always saved in the project file (Labview) or because we don't always needs to inspect that accurately the working of a function or a program. Plus some microcontrollers don't have many hardware breakpoints (4 usable on stm32) so avoid it as much as possible.
+
+Modern debuggers allows to watch memory, constants and variables according to their defined type. You can "explore" structures in a tree-like fashion. Even arrays can be expanded. Complex expressions can be used as well, even using local variables of the current context. Hence you can watch deeply nested data just like your code will. But again, avoid too nested computation, keep it simple and stupid.
