@@ -15,7 +15,7 @@ There are a few IDF (Integrated Development Format) such like Jupyter Notebooks 
 
 https://jupyter.org/
 
-Hence keeping track which update of the documentation belongs to which source code is often tricky. If version numbers are not updated with care, one can easily start lagging behind and inconsistencies could arise, leading to bugs difficult to understand, making people loose time and money. As the source code might not be shared, so the documentation is the reference point.
+Hence keeping track which update of the documentation belongs to which source code is often tricky. If version numbers are not updated with care, one can easily start lagging behind and inconsistencies could arise, leading to bugs difficult to understand, making people loose time and money. As the source code might not be shared, thus the documentation is the reference point.
 
 So, again, everything starts from the documentation. That's what open standards are, documentations and specifications that are not linked to any particular implementation. Those are often technical informations, but functional level documentation shall also be opened to broader review and use. That might help standardise some interaction with the computer and its programs.
 
@@ -63,17 +63,17 @@ Humans deals with numbers, words and arrays. Computers deals with numbers and ar
 
 Then if it is not enough, you can create complex data types by combining simpler types together into structures. Or classes. Whatever. You'll get screwed one way or another if you don't follow the White Rabbit. Well, if you don't keep track of what goes with what. Python can be nice to prototype things, but you can easily start to mix (mess ?) up strings and numbers without noticing.
 
-Hence even dynamic typed languages should be somewhat typed (Python's mypy) not just for the rigorist's sake. The use of proxy macros to create a set of user defined types shall help to mass modify a source code in case of typing change (poor's man refactoring). Use generic types for the common cases, do not over-engineer things to early it types aren't really set at the beginning of a project.
+Hence even dynamic typed languages should be somewhat typed (Python's mypy) not just for the rigorist's sake. The use of proxy macros to create a set of user defined types shall help to mass modify a source code in case of typing change (poor's man refactoring). Use generic types for the common cases, do not over-engineer things too early if types aren't really set at the beginning of a project.
 
-Did I told you to document before hand to, one amongst others, anticipate the typing of your structures ? While the string type is very flexible (Tcl) as a data container, you cannot do much with it, hence you'll rely one way or another on more suitable data types. But choose them carefully. Not only they might waste space, but require more processing power, even just being misaligned.
+Did I told you to document before, and to, one amongst others, anticipate the typing of your structures ? While the string type is very flexible (Tcl) as a data container, you cannot do much with it, hence you'll rely one way or another on more suitable data types. But choose them carefully. Not only they might waste space, but require more processing power, even just being misaligned in memory.
 
 Endianess shouldn't be an issue anymore. Try to stay native to the processor used, little endian has won the battle, get used to it. While watching a little endian memory dump is ugly, debuggers can now display memory in "integer array" format of the chosen size. Plus little endian have the "advantage" to always have the LSB at the same location, regardless of the integer size (byte, word, int).
 
 ## Coding
 
-Where is your documentation ? Don't start typing if you don't have a minimum of documentation. Even a commented pseudo code should do as a starting point. But always tell what's the purpose of the project, file, class, method, definition, whatever. You'll come back to it 5 years later and won't understand shit about what happened. Document for the future yourself. Or anyone else.
+Where is your documentation ? Don't start typing if you don't have a minimum of documentation. Even a commented pseudo code should do as a starting point. But always tell what's the purpose of the project is, file, class, method, definition, whatever. You'll come back to it 5 years later and won't understand shit about what happened. Document for your future self. Or anyone else.
 
-Structuring the code is important. Very important. Damn fucking it is. Just follow some common sense practices. Define your variables at one location (beginning of the function), reuse them as much as possible, don't allocate more after. Use the code structure with care to construct the code flow. Separate the nominal case from the error handling. Mirror it as much as possible.
+Structuring the code is important. Very important. Damn fucking it is. Just follow some common sense practices. Define your variables at one location (beginning of the function), reuse them as much as possible, don't allocate more after. Use the code structure with care to construct the code flow. Separate the nominal case from the error handling. Mirror it as much as possible (fold pattern).
 
 One return per function, store the value in a local variable with the right type, preferably set to its default value. You should start a function at the top and always end at the bottom. Never quit the function prematurely. Use an error code or any mean to propagate the error to be handled at the right level and/or log it for the user/coder to get a feedback and behave accordingly.
 
